@@ -1,6 +1,6 @@
 _addon.name = 'Assist'
 _addon.author = 'DiscipleOfEris'
-_addon.version = '1.0.0'
+_addon.version = '1.0.1'
 _addon.command = 'assist'
 
 require('tables')
@@ -20,7 +20,7 @@ windower.register_event('addon command', function(command, ...)
     assist(target_id)
   elseif command == 'me' then
     local target = windower.ffxi.get_mob_by_target('t')
-    windower.send_ipc_message('target '..target.id)
+    if target then windower.send_ipc_message('target '..target.id) end
   end
 end)
 
@@ -45,7 +45,7 @@ function assist(target_id)
   local self = windower.ffxi.get_mob_by_target('me')
   local target = windower.ffxi.get_mob_by_id(target_id)
   local current = windower.ffxi.get_mob_by_target('t')
-  if current and target.id == current.id then return end
+  if not target or (current and target.id == current.id) then return end
   
   if target.spawn_type == 16 then delock = target_id end
   
