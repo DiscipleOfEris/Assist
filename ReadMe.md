@@ -1,3 +1,5 @@
+# Development for this addon has been moved to https://github.com/DiscipleOfEris/Windower4Addons
+
 # Assist
 FFXI Windower addon that let's you tell your multiboxed alts to target your target without locking on.
 
